@@ -32,7 +32,17 @@ limitations under the License.
     <a href="below/another.html">Another page</a>
     <script>
 
-    // Script to register the service worker goes here
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js')
+    .then(registration => {
+      console.log('Service Worker is registered', registration);
+    })
+    .catch(err => {
+      console.error('Registration failed:', err);
+    });
+  });
+}
 
     </script>
   </body>
